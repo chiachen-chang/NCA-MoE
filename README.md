@@ -1,2 +1,174 @@
-# NCA-MoE
-**NCA-MoE** (N-gram Channel Attention Mixture-of-Experts) is a novel adaptive multi-task continual learning framework designed for scalable web security detection with strong anti-forgetting capabilities. Our framework addresses the critical challenge of catastrophic forgetting in web threat detection systems operating in dynamic environments
+# NCA-MoE: Adaptive multi-task continual learning for web security detection via N-gram channel attention mixture of experts
+
+[![Paper Status](https://img.shields.io/badge/Paper-Under%20Review-orange)](https://github.com/your-username/NCA-MoE)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.8+-brightgreen.svg)](https://python.org)
+[![PyTorch](https://img.shields.io/badge/PyTorch-1.8+-red.svg)](https://pytorch.org)
+
+> **🚧 Repository Status: Code and data are being organized and will be uploaded soon.**
+
+## 📋 Overview
+
+**NCA-MoE** (N-gram Channel Attention Mixture-of-Experts) is a novel adaptive multi-task continual learning framework designed for scalable web security detection with strong anti-forgetting capabilities. Our framework addresses the critical challenge of catastrophic forgetting in web threat detection systems operating in dynamic environments.
+
+### 🎯 Key Features
+
+- **🧠 Multi-Instance N-gram Representation**: Character-level N-gram feature extraction (1-gram to 5-gram) with miVLAD aggregation
+- **🎨 NCA-Net Expert Architecture**: Channel attention mechanisms with Selective Kernel Networks (SKNet) for dynamic feature selection
+- **⚡ Adaptive Mixture-of-Experts**: Dynamic expert expansion with intelligent gating mechanisms
+- **🛡️ Strong Anti-Forgetting**: Parameter isolation and proportional sample replay for robust knowledge retention
+- **📊 Superior Performance**: Achieves 0.9942±0.0029 anti-forgetting score, significantly outperforming existing methods
+
+## 🏆 Performance Highlights
+
+| Method | Anti-Forgetting Score | Performance Improvement |
+|--------|----------------------|------------------------|
+| **NCA-MoE** | **0.9942±0.0029** | **Baseline** |
+| Learning without Forgetting | 0.9233±0.0275 | +7.7% |
+| Synaptic Intelligence | 0.7271±0.0884 | +36.7% |
+| Elastic Weight Consolidation | 0.6256±0.0497 | +58.9% |
+
+## 🗂️ Dataset Coverage
+
+Our framework is evaluated on five representative web security datasets:
+
+- **CSIC-2010**: SQL injection and XSS attacks (35,586 entries)
+- **ECML-PKDD 2007**: Malicious bot detection (21,063 entries)  
+- **ISCX-Defacement**: Website defacement attacks (192,914 entries)
+- **ISCX-Malware**: Malware-generated traffic (65,040 entries)
+- **ISCX-Phishing**: Phishing attack detection (188,214 entries)
+
+## 🏗️ Architecture
+
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Web Request   │───▶│  Multi-Instance  │───▶│   NCA-MoE      │
+│    (Raw Text)   │    │  N-gram Repr.    │    │   Framework     │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                              │                          │
+                       ┌──────▼──────┐            ┌─────▼─────┐
+                       │ 1-5 gram    │            │  Expert   │
+                       │ Extraction  │            │  Routing  │
+                       │ + miVLAD    │            │ & Fusion  │
+                       └─────────────┘            └───────────┘
+```
+
+## 🛠️ Installation
+
+### Prerequisites
+
+- Python 3.8+
+- PyTorch 1.8+
+- CUDA 10.2+ (for GPU support)
+
+### Quick Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/NCA-MoE.git
+cd NCA-MoE
+
+# Create virtual environment
+python -m venv nca_moe_env
+source nca_moe_env/bin/activate  # On Windows: nca_moe_env\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+## 🚀 Quick Start
+
+```python
+from models.nca_moe import NCAMoEFramework
+from utils.data_loader import WebSecurityDataLoader
+
+# Initialize the framework
+model = NCAMoEFramework(
+    input_dim=500,
+    ngram_dim=5, 
+    hidden_dim=1024,
+    output_dim=2
+)
+
+# Load and preprocess data
+data_loader = WebSecurityDataLoader()
+train_data = data_loader.load_dataset('CSIC-2010')
+
+# Train the model
+model.continual_train(train_data, task_id=1)
+
+# Evaluate anti-forgetting performance
+af_score = model.evaluate_anti_forgetting(test_data)
+print(f"Anti-Forgetting Score: {af_score:.4f}")
+```
+
+## 📊 Experimental Results
+
+### Anti-Forgetting Performance Across Task Sequences
+
+| Task Order | NCA-MoE | LwF | EWC | SI |
+|-----------|---------|-----|-----|----| 
+| Order 1   | 0.992   | 0.899 | 0.635 | 0.588 |
+| Order 2   | 0.991   | 0.909 | 0.697 | 0.809 |
+| Order 3   | 0.996   | 0.968 | 0.602 | 0.778 |
+| Order 4   | 0.998   | 0.909 | 0.633 | 0.766 |
+| Order 5   | 0.993   | 0.930 | 0.561 | 0.695 |
+| **Average** | **0.994** | **0.923** | **0.626** | **0.727** |
+
+## 📝 Citation
+
+If you find our work useful for your research, please consider citing:
+
+```bibtex
+@article{zhang2024ncamoe,
+  title={NCA-MoE: An Adaptive Multi-task Continual Learning Framework for Network Threat Detection with Strong Anti-forgetting Capability},
+  author={Zhang, Jiachen and [Authors]},
+  journal={[Journal Name]},
+  year={2024},
+  institution={School of Cyberspace Security, Beijing University of Posts and Telecommunications}
+}
+```
+
+## 🔄 Current Status & Roadmap
+
+### ✅ Completed
+- [x] Core algorithm development and testing
+- [x] Comprehensive experimental evaluation
+- [x] Paper manuscript preparation
+- [x] Performance benchmarking on 5 datasets
+
+### 🚧 In Progress  
+- [ ] Code organization and documentation
+- [ ] Dataset preprocessing scripts
+- [ ] Experimental result reproduction scripts
+- [ ] Detailed API documentation
+
+### 📅 Coming Soon
+- [ ] **Code Release**: Complete source code with detailed comments
+- [ ] **Dataset Scripts**: Preprocessing and loading utilities
+- [ ] **Pretrained Models**: Ready-to-use model checkpoints
+- [ ] **Interactive Demo**: Web-based demonstration interface
+- [ ] **Tutorial Notebooks**: Step-by-step implementation guides
+
+## 📧 Contact
+
+- **Primary Author**: Jiachen Zhang
+- **Institution**: School of Cyberspace Security, Beijing University of Posts and Telecommunications
+- **Email**: [jiachen.zhang@bupt.edu.cn]
+
+For questions about the paper or implementation, please:
+1. Open an issue in this repository
+2. Contact the authors via email
+3. Join our discussion forum (coming soon)
+
+## 🙏 Acknowledgements
+
+We thank the contributors of the datasets used in our evaluation:
+- CSIC-2010 HTTP Dataset
+- ECML/PKDD 2007 Challenge Dataset  
+- ISCX-2016 Dataset Collection
+---
+
+⭐ **Star this repository if you find it helpful!** ⭐
+
+**Note**: This repository is actively maintained. Code and datasets will be uploaded progressively as we finalize the organization and documentation.
