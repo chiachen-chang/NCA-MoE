@@ -39,19 +39,9 @@ Our framework is evaluated on five representative web security datasets:
 - **ISCX-Phishing**: Phishing attack detection (188,214 entries)
 
 ## 🏗️ Architecture
-
-```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Web Request   │───▶│  Multi-Instance  │───▶│   NCA-MoE      │
-│    (Raw Text)   │    │  N-gram Repr.    │    │   Framework     │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-                              │                          │
-                       ┌──────▼──────┐            ┌─────▼─────┐
-                       │ 1-5 gram    │            │  Expert   │
-                       │ Extraction  │            │  Routing  │
-                       │ + miVLAD    │            │ & Fusion  │
-                       └─────────────┘            └───────────┘
-```
+![NCA-MoE Architecture](figures/struct_fig.png)
+![NCA Architecture](figures/nca_fig.png)
+![Train and Test with Moe Architecture](figures/train_test_fig.png)
 
 ## 🛠️ Installation
 
@@ -120,35 +110,14 @@ print(f"Anti-Forgetting Score: {af_score:.4f}")
 If you find our work useful for your research, please consider citing:
 
 ```bibtex
-@article{zhang2024ncamoe,
+@article{wait for the article accept hah,
   title={NCA-MoE: An Adaptive Multi-task Continual Learning Framework for Network Threat Detection with Strong Anti-forgetting Capability},
-  author={Zhang, Jiachen and [Authors]},
-  journal={[Journal Name]},
-  year={2024},
+  author={Zhang, Jiachen},
+  journal={Journal of Information Security and Applications},
+  year={2025},
   institution={School of Cyberspace Security, Beijing University of Posts and Telecommunications}
 }
 ```
-
-## 🔄 Current Status & Roadmap
-
-### ✅ Completed
-- [x] Core algorithm development and testing
-- [x] Comprehensive experimental evaluation
-- [x] Paper manuscript preparation
-- [x] Performance benchmarking on 5 datasets
-
-### 🚧 In Progress  
-- [ ] Code organization and documentation
-- [ ] Dataset preprocessing scripts
-- [ ] Experimental result reproduction scripts
-- [ ] Detailed API documentation
-
-### 📅 Coming Soon
-- [ ] **Code Release**: Complete source code with detailed comments
-- [ ] **Dataset Scripts**: Preprocessing and loading utilities
-- [ ] **Pretrained Models**: Ready-to-use model checkpoints
-- [ ] **Interactive Demo**: Web-based demonstration interface
-- [ ] **Tutorial Notebooks**: Step-by-step implementation guides
 
 ## 📧 Contact
 
