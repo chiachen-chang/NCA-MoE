@@ -19,14 +19,7 @@
 - **🛡️ Strong Anti-Forgetting**: Parameter isolation and proportional sample replay for robust knowledge retention
 - **📊 Superior Performance**: Achieves 0.9942±0.0029 anti-forgetting score, significantly outperforming existing methods
 
-## 🏆 Performance Highlights
 
-| Method | Anti-Forgetting Score | Performance Improvement |
-|--------|----------------------|------------------------|
-| **NCA-MoE** | **0.9942±0.0029** | **Baseline** |
-| Learning without Forgetting | 0.9233±0.0275 | +7.7% |
-| Synaptic Intelligence | 0.7271±0.0884 | +36.7% |
-| Elastic Weight Consolidation | 0.6256±0.0497 | +58.9% |
 
 ## 🗂️ Dataset Coverage
 
@@ -92,18 +85,6 @@ af_score = model.evaluate_anti_forgetting(test_data)
 print(f"Anti-Forgetting Score: {af_score:.4f}")
 ```
 
-## 📊 Experimental Results
-
-### Anti-Forgetting Performance Across Task Sequences
-
-| Task Order | NCA-MoE | LwF | EWC | SI |
-|-----------|---------|-----|-----|----| 
-| Order 1   | 0.992   | 0.899 | 0.635 | 0.588 |
-| Order 2   | 0.991   | 0.909 | 0.697 | 0.809 |
-| Order 3   | 0.996   | 0.968 | 0.602 | 0.778 |
-| Order 4   | 0.998   | 0.909 | 0.633 | 0.766 |
-| Order 5   | 0.993   | 0.930 | 0.561 | 0.695 |
-| **Average** | **0.994** | **0.923** | **0.626** | **0.727** |
 
 ## 📝 Citation
 
