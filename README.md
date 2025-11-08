@@ -5,7 +5,7 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-brightgreen.svg)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.8+-red.svg)](https://pytorch.org)
 
-> **🚧 Repository Status: Code and data are being organized and will be uploaded soon.**
+> **🚧 Repository Status: Code and data are being organized.**
 
 ## 📋 Overview
 
